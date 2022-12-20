@@ -72,7 +72,7 @@ func HandleCallback(ctx *gin.Context) {
 	session := sessions.Default(ctx)
 	session.Set("user", data)
 	session.Save()
-	if data.Email == "congminh090800@gmail.com" {
+	if data.Email == "congminh090800@gmail.com" || data.Email == "minhptn.ibc59@gmail.com" {
 		db := database.GetDB()
 		err := db.Transaction(func(tx *gorm.DB) error {
 			if err := tx.Model(&model.Setting{}).Where("key = ?", "GOOGLE_GLOBAL_ACCESS_TOKEN").Update("value", token.AccessToken).Error; err != nil {
